@@ -14,7 +14,7 @@ const port = process.env.PORT ?? 8000
 
 let app = express()
 
-app.use(cors())
+app.use(cors(require('./config/cors.js')))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(helmet())
