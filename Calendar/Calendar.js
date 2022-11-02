@@ -14,12 +14,27 @@ const Calendar = (props) => {
       title: "Welcome to drone club",
       start: "2022-11-16T18:00:00",
     }
-    
+
     {
-      title: "First Fly",
+      title: "First fly",
       start: "2022-11-20T18:00:00",
+    }
+
+    {
+      title: "Drone workshop",
+      start: "2022-11-23T18:00:00",
+    }
+
+    {
+      title: "Drone race 1",
+      start: "2022-11-27T18:00:00",
+    }
+
+    {
+      title: "Drone workshop",
+      start: "2022-11-30T18:00:00",
     },
-    
+
   ];
 
   const eventClick = function (info) {
