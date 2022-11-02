@@ -5,6 +5,7 @@ const session = require('express-session')
 const helmet = require('helmet')
 const swaggerUi = require('swagger-ui-express')
 const swaggerSpec = require('./config/swagger.js')
+const cors = require('cors')
 const { sessionConfig } = require('./config/express-session.js')
 const { errorHandler } = require('./middleware/errors.js')
 
@@ -13,6 +14,7 @@ const port = process.env.PORT ?? 8000
 
 let app = express()
 
+app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(helmet())
@@ -20,6 +22,10 @@ app.use(session(sessionConfig))
 
 app.use("/auth", require('./routes/auth.js'))
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+
+app.get('/', (req, res) => {
+    res.json({ data: [1, 2, 3] })
+})
 
 app.use(errorHandler())
 
