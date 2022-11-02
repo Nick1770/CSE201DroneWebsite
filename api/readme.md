@@ -14,5 +14,5 @@ DB_USER = "root"
 DB_PASSWORD = ""
 DB_NAME = "CSE201"
 ```
-* run ```npm run build``` or ```npm run dev```
+* run ```npm run start``` or ```npm run dev```
 * api documentation found at route ```/docs```
