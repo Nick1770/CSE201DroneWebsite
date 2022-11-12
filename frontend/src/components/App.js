@@ -1,23 +1,24 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+const apiURL = process.env.REACT_APP_API_URL
 
 function App() {
-  const [temp, setTemp] = useState([])
+  const [nums, setNums] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:5000')
+    fetch(apiURL)
       .then(result => result.json())
       .then(json => {
-        setTemp(json['data'])
+        setNums(json['data'])
       })
   }, [])
 
   return (
-    <div className="App">
-      <h2>Data from api:</h2>
-      <ul>
-        {temp.map(v => <li key={v}>{v}</li>)}
-      </ul>
-    </div>
+      <div className="App">
+        <h2>Data from api:</h2>
+        <ul>
+          {nums.map(v => <li key={v}>{v}</li>)}
+        </ul>
+      </div>
   );
 }
 
