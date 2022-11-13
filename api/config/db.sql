@@ -11,6 +11,8 @@ USE CSE201;
 CREATE TABLE Users (
 	id					INT					NOT NULL	PRIMARY KEY		AUTO_INCREMENT,
     email				VARCHAR(200)		NOT NULL	UNIQUE,
+	fName				VARCHAR(50)			NOT NULL,
+	lName				VARCHAR(50)			NOT NULL,
 	password			CHAR(60) BINARY		NOT NULL,
     createdAt			DATETIME			NOT NULL	DEFAULT CURRENT_TIMESTAMP
 );
@@ -56,6 +58,8 @@ DELIMITER //
 
 CREATE PROCEDURE Register(
 	email			VARCHAR(200),
+	fName			VARCHAR(50),
+	lName			VARCHAR(50),
     hashedPassword	CHAR(60) BINARY
 ) this_proc:BEGIN
 	DECLARE _userId	 INT;
@@ -68,8 +72,8 @@ CREATE PROCEDURE Register(
 		LEAVE this_proc;
     END; END IF;
     
-	INSERT INTO Users (email, password) VALUE
-		(email, hashedPassword);
+	INSERT INTO Users (email, fName, lName, password) VALUE
+		(email, fName, lName, hashedPassword);
         
 	SET _userId = @@IDENTITY;
 

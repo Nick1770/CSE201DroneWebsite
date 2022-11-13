@@ -32,9 +32,9 @@ export const AuthProvider = ({ children }) => {
         return res
     }
 
-    const register = async (email, password) => {
+    const register = async (email, fName, lName, password) => {
         const res = await callAPI('/auth/register', 'POST', {
-            email, password
+            email, fName, lName, password
         })
         
         if (res.status === 201) {
