@@ -124,14 +124,14 @@ router.post('/logout', (req, res) => {
  *         description: Email already in use
  */
 router.post('/register', asyncHandler(async (req, res) => {
-    const { email, password } = req.body
+    const { email, fName, lName, password } = req.body
 
-    if (!email || !password)
+    if (!email || !fName || !lName || !password)
         return res.status(400).json({ message: 'Missing fields in body' })
     
     const hashedPassword = await bcrypt.hash(password, 12)
 
-    const result = await sproc('Register', [email, hashedPassword], true)
+    const result = await sproc('Register', [email, fName, lName, hashedPassword], true)
 
     if (!result.success)
         return res.status(409).json({ message: result.message })
