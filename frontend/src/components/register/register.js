@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import callAPI from "../../api/fetch"
 import useAuth from "../../hooks/useAuth"
 
 const Register = () => {
