@@ -22,9 +22,9 @@ const Home = () => {
                 every Wednesday and have plenty of oppurtunities to meet and connect
                 with fellow enthusiasts. We will never charge club dues and are
                 always open to new members! No knowledge necessary.</d>
-            </div>
 
-            <Newsletter/>
+                <Newsletter/>
+            </div>
         </>
     )
 }
