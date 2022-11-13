@@ -25,14 +25,14 @@ const Login = () => {
         <>
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="email">email</label>
+                <label htmlFor="email">Email: </label>
                 <input type="email" id="email" value={email}
                     onChange={e => setEmail(e.target.value)}/>
-
-                <label htmlFor="password">password</label>
+                <br/>
+                <label htmlFor="password">Password: </label>
                 <input type="password" id="password" value={password}
                     onChange={e => setPassword(e.target.value)}/>
-
+                <br/>
                 <input type="submit" value="Login"/>
             </form>
         </>
