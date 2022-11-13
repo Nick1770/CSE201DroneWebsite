@@ -39,8 +39,8 @@ CREATE TABLE Attendance (
 
 CREATE TABLE Events (
 	id			INT			NOT NULL	PRIMARY KEY	AUTO_INCREMENT,
-    name		VARCHAR(100) NOT NULL,
-	time		DATETIME	NOT NULL
+    title		VARCHAR(100) NOT NULL,
+	start		DATETIME	NOT NULL
 );
 
 -- --------------------------------------------------------------------------------------------------------- --
@@ -97,10 +97,10 @@ CREATE PROCEDURE GetRoles(
 END//
 
 CREATE PROCEDURE AddEvent(
-    name		VARCHAR(100),
-	time		DATETIME
+    title		VARCHAR(100),
+	start		DATETIME
 ) BEGIN
-	INSERT INTO Events (name, time) VALUE (name, time);
+	INSERT INTO Events (title, start) VALUE (title, start);
 END//
 
 CREATE PROCEDURE GetEvents() BEGIN
@@ -121,6 +121,7 @@ SET SQL_SAFE_UPDATES = 0;
 -- CALL AssignRole(1,1)
 -- select * from roles
 -- CALL GetRoles(1)
+-- delete from events;
 -- select * from events;
 -- Call Register ('d','');
 -- SELECT * FROM Users;
