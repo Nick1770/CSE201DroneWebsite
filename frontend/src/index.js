@@ -1,12 +1,19 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import AuthProvider from './contexts/authContext';
 
-import App from "./components/App";
-
-ReactDOM.render(
-  <CssBaseline>
-    <App />
-  </CssBaseline>,
-  document.querySelector("#root")
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  // <React.StrictMode>
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          <Route path="/*" element={<App/>}></Route>
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
+  // </React.StrictMode>
 );
