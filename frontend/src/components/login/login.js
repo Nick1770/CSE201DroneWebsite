@@ -14,7 +14,8 @@ const Login = () => {
         console.log(email + ', ' + password)
         login(email, password)
             .then(res => {
-                navigate('/')
+                if (res.status === 200)
+                    navigate('/')
             })
     }
 

@@ -1,13 +1,21 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import callAPI from "../../api/fetch"
+import useAuth from "../../hooks/useAuth"
 
 const Register = () => {
+    const { register } = useAuth()
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         console.log(email + ', ' + password)
+        const res = await register(email, password)
+        if (res.status === 201)
+            navigate('/')
     }
 
     return (
