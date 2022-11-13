@@ -1,6 +1,7 @@
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
 import './home.css'
+import Newsletter from '../newsletter/Newsletter';
 
 const Home = () => {
     return (
@@ -22,6 +23,8 @@ const Home = () => {
                 with fellow enthusiasts. We will never charge club dues and are
                 always open to new members! No knowledge necessary.</d>
             </div>
+
+            <Newsletter/>
         </>
     )
 }
