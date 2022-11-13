@@ -39,16 +39,8 @@ CREATE TABLE Attendance (
 
 CREATE TABLE Events (
 	id			INT			NOT NULL	PRIMARY KEY	AUTO_INCREMENT,
-	user_id		INT			NOT NULL,
-    day			DATETIME	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY(user_id) REFERENCES Users(id) 
-);
-
-CREATE TABLE Members (
-	id			INT			NOT NULL	PRIMARY KEY	AUTO_INCREMENT,
-	user_id		INT			NOT NULL,
-    joined		DATETIME	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY(user_id) REFERENCES Users(id) 
+    title		VARCHAR(100) NOT NULL,
+	start		DATETIME	NOT NULL
 );
 
 -- --------------------------------------------------------------------------------------------------------- --
@@ -104,6 +96,17 @@ CREATE PROCEDURE GetRoles(
     WHERE a.user_id = userId;
 END//
 
+CREATE PROCEDURE AddEvent(
+    title		VARCHAR(100),
+	start		DATETIME
+) BEGIN
+	INSERT INTO Events (title, start) VALUE (title, start);
+END//
+
+CREATE PROCEDURE GetEvents() BEGIN
+	SELECT * FROM Events;
+END//
+
 DELIMITER ;
 -- --------------------------------------------------------------------------------------------------------- --
 --                                            Set Initial Values                                             --
@@ -114,9 +117,12 @@ INSERT INTO Roles (name) VALUE ('ADMIN');
 -- --------------------------------------------------------------------------------------------------------- --
 
 SET SQL_SAFE_UPDATES = 0;
+-- CALL AddEvent('name', CURRENT_TIMESTAMP());
 -- CALL AssignRole(1,1)
 -- select * from roles
 -- CALL GetRoles(1)
+-- delete from events;
+-- select * from events;
 -- Call Register ('d','');
 -- SELECT * FROM Users;
 -- DELETE FROM Users;
