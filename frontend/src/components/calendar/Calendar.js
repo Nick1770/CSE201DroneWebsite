@@ -3,39 +3,18 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import { useState } from "react";
 import AddEvent from "./addEvent";
 import useAuth from "../../hooks/useAuth";
+import callAPI from "../../api/fetch";
 
 const Calendar = (props) => {
     // const { darkMode } = props;
     const [events, setEvents] = useState([])
     const { hasRole } = useAuth()
     
-    const getEvents = () => {
-      setEvents([
-      {
-        title: "Welcome to drone club",
-        start: "2022-11-16T18:00:00",
-        id: 0
-      },
-  
-      {
-        title: "First fly",
-        start: "2022-11-20T18:00:00",
-      },
-  
-      {
-        title: "Drone workshop",
-        start: "2022-11-23T18:00:00",
-      },
-  
-      {
-        title: "Drone race 1",
-        start: "2022-11-27T18:00:00",
-      },
-  
-      {
-        title: "Drone workshop",
-        start: "2022-11-30T18:00:00",
-      }])
+    const getEvents = async () => {
+      const response = await callAPI('/events', 'GET')
+      const { events } = await response.json()
+      console.log(events)
+      setEvents(events)
     }
 
     const handleDateSet = (args) => {
@@ -43,7 +22,8 @@ const Calendar = (props) => {
       getEvents()
     }
 
-    const handleAddEvent = (event) => {
+    const handleAddEvent = async (event) => {
+      await callAPI('/events', 'POST', event)
       setEvents(prev => [...prev, event])
     }
   
