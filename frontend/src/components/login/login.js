@@ -16,6 +16,8 @@ const Login = () => {
             .then(res => {
                 if (res.status === 200)
                     navigate('/')
+                else
+                    alert('incorrect login credentials')
             })
     }
 

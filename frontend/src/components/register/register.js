@@ -16,6 +16,8 @@ const Register = () => {
         const res = await register(email, password)
         if (res.status === 201)
             navigate('/')
+        else
+            alert('incorrect login credentials')
     }
 
     return (
