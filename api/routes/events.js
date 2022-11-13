@@ -29,7 +29,7 @@ const router = Router()
  *       201:
  *         description: Event added
  */
-router.post('/', asyncHandler(async (req, res) => {
+router.post('/', Auth.isAdmin, asyncHandler(async (req, res) => {
     const { title, start } = req.body
 
     if (!title || !start)
@@ -51,7 +51,7 @@ router.post('/', asyncHandler(async (req, res) => {
  *       201:
  *         description: Event added
  */
- router.get('/', asyncHandler(async (req, res) => {
+ router.get('/', Auth.isAdmin, asyncHandler(async (req, res) => {
     const events = await sproc('GetEvents', [], false)
     res.json({
         events 
