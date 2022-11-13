@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
+import "./nav.css"
 
 export const Nav = () => {
     const { auth, logout, hasRole } = useAuth()
@@ -11,15 +12,17 @@ export const Nav = () => {
             <Link to="/imageGallery">Image Gallery</Link>
 
             {hasRole('ADMIN') ? <Link to="/attendance">Attendance</Link> : ""}
-            
-            {
-                auth
-                    ? <Link onClick={logout}>Logout</Link>
-                    : <>
-                        <Link to="/login">Login</Link>
-                        <Link to="/register">Register</Link>
-                      </>
-            }
+
+            <div>    
+                {
+                    auth
+                        ? <Link onClick={logout}>Logout</Link>
+                        : <>
+                            <Link to="/login">Login</Link>
+                            <Link to="/register">Register</Link>
+                        </>
+                }
+            </div>
         </nav>
     )
 }

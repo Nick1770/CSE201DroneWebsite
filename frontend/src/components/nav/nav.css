@@ -1,0 +1,15 @@
+nav {
+    display: flex;
+    background-color: #B61E2E;
+    padding: 5px;
+}
+
+nav a {
+    padding: 0 10px;
+    text-decoration: none;
+    color: white;
+}
+
+nav div {
+    margin-left: auto;
+}
