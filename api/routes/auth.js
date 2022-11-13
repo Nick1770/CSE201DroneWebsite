@@ -37,6 +37,10 @@ const router = Router()
  *                   type: integer
  *                 message:
  *                   type: string
+ *                 roles:
+ *                   type: array
+ *                   items:
+ *                     type: string
  *       400:
  *         description: Missing fields in body
  *       401:
@@ -110,6 +114,10 @@ router.post('/logout', (req, res) => {
  *                   type: integer
  *                 message:
  *                   type: string
+ *                 roles:
+ *                   type: array
+ *                   items:
+ *                     type: string
  *       400:
  *         description: Missing fields in body
  *       409:
