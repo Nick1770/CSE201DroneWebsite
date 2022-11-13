@@ -6,15 +6,22 @@ import React, { useState, useEffect } from 'react';
 export const Nav = () => {
     const { auth, logout, hasRole } = useAuth()
     const [theme, setTheme] = useState('light');
+
+    useEffect(() => {
+        setTheme(localStorage.getItem('theme'))
+    }, [])
+
     const toggleTheme = () => {
         if (theme === 'light') {
-        setTheme('dark');
+            localStorage.setItem('theme', 'dark')
+            setTheme('dark');
         } else {
-        setTheme('light');
+            localStorage.setItem('theme', 'light')
+            setTheme('light');
         }
 };
     useEffect(() => {
-    document.body.className = theme;
+        document.body.className = theme;
     }, [theme]);
     return (
         <nav>
