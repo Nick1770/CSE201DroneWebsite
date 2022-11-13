@@ -30,7 +30,7 @@ export const Nav = () => {
 
             {hasRole('ADMIN') ? <Link to="/attendance">Attendance</Link> : ""}
 
-            <div>    
+            <span>    
                 {
                     auth
                         ? <Link onClick={logout}>Logout</Link>
@@ -39,8 +39,8 @@ export const Nav = () => {
                             <Link to="/register">Register</Link>
                         </>
                 }
-             <Link onClick={toggleTheme}>DarkMode</Link>
-            </div>
+                <Link onClick={toggleTheme}>DarkMode</Link>
+            </span>
         </nav>
     )
 }

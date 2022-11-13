@@ -2,23 +2,28 @@ nav {
     display: flex;
     background-color: #B61E2E;
     padding: 5px;
+    box-shadow: -5px 0px 5px black;
 }
 
 nav a {
-    padding: 0 10px;
+    padding: 25px 30px;
     text-decoration: none;
     color: white;
+    text-transform: uppercase;
 }
 
-nav div {
+nav span {
+    display: flex;
+    justify-content: center;
     margin-left: auto;
 }
 
 .dark {
     background-color: #333;
     color: #fff;
-  }
-  .light {
+}
+
+.light {
     background-color: #fff;
     color: #333;
-  }
+}
