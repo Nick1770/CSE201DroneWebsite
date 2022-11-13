@@ -28,23 +28,23 @@ const Register = () => {
             <h1>Register</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="fName">First name: </label>
-                <input type="text" id="fName" value={fName} autoComplete="false"
+                <input type="text" id="fName" value={fName} autoComplete="false" required
                     onChange={e => setFName(e.target.value)}/>
                 <br/>
 
                 <label htmlFor="lName">Last name: </label>
-                <input type="text" id="lName" value={lName} autoComplete="false"
+                <input type="text" id="lName" value={lName} autoComplete="false" required
                     onChange={e => setLName(e.target.value)}/>
                 <br/>
 
                 <label htmlFor="email">Email: </label>
-                <input type="email" id="email" value={email} autoComplete="false"
-                    onChange={e => setEmail(e.target.value)}/>
+                <input type="email" id="email" value={email} autoComplete="false" placeholder="example@gmail.com"
+                    required onChange={e => setEmail(e.target.value)} />
                 <br/>
 
                 <label htmlFor="password">Password: </label>
-                <input type="password" id="password" value={password}
-                    onChange={e => setPassword(e.target.value)}/>
+                <input type="password" id="password" value={password} required
+                    onChange={e => setPassword(e.target.value)} />
                 <br/>
 
                 <input type="submit" value="Register"/>
