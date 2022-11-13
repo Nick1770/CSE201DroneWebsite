@@ -4,6 +4,7 @@ import { useState } from "react";
 import AddEvent from "./addEvent";
 import useAuth from "../../hooks/useAuth";
 import callAPI from "../../api/fetch";
+import "./calendar.css"
 
 const Calendar = (props) => {
     // const { darkMode } = props;
@@ -43,7 +44,7 @@ const Calendar = (props) => {
       <div id="Calendar">
         <h1>Calendar</h1>
         <FullCalendar
-          // dayHeaderClassNames={darkMode ? "fc-widget-header" : ""}
+          dayHeaderClassNames="fc-widget-header"
           height="auto"
           plugins={[dayGridPlugin]}
           initialView={"dayGridMonth"}
