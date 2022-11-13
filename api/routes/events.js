@@ -47,12 +47,30 @@ router.post('/', Auth.isAdmin, asyncHandler(async (req, res) => {
  *     summary: get events
  *     tags:
  *       - "Events"
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               startDate:
+ *                 type: date
+ *               endDate:
+ *                 type: date
  *     responses:
  *       201:
  *         description: Event added
  */
- router.get('/', Auth.isAdmin, asyncHandler(async (req, res) => {
-    const events = await sproc('GetEvents', [], false)
+ router.get('/', asyncHandler(async (req, res) => {
+    const { startDate, endDate } = req.query
+
+    console.log(startDate)
+
+    if (!startDate || !endDate)
+        return res.status(400).json({ message: 'missing fields in body' })
+
+    const events = await sproc('GetEvents', [startDate, endDate], false)
     res.json({
         events 
     })

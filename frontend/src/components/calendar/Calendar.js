@@ -11,16 +11,17 @@ const Calendar = (props) => {
     const [events, setEvents] = useState([])
     const { hasRole } = useAuth()
     
-    const getEvents = async () => {
-      const response = await callAPI('/events', 'GET')
+    const getEvents = async (start, end) => {
+      start = start.toISOString().split('.')[0]
+      end = end.toISOString().split('.')[0]
+      const response = await callAPI(`/events?startDate=${start}&endDate=${end}`, 'GET')
       const { events } = await response.json()
-      console.log(events)
       setEvents(events)
     }
 
     const handleDateSet = (args) => {
       console.log(args)
-      getEvents()
+      getEvents(args.start, args.end)
     }
 
     const handleAddEvent = async (event) => {
