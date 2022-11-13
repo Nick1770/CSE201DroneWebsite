@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <>
             <div class="wrapper">
-                <h1>Home</h1>
+                <h1>Welcome to MU Drone Club</h1>
                 <div class="slider-container">
                     <AwesomeSlider animation="cubeAnimation">
                         <div data-src="/images/leFish.png"/>
