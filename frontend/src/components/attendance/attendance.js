@@ -43,8 +43,8 @@ const Attendance = () => {
                 <ul>
                     { members.map((m, i) => 
                         <li key={m.id}>
-                            <input type="checkbox" checked={!m.absent} onChange={(e) => handleCheckbox(e, i)}/>
-                            {m.fName} {m.lName}
+                            <input id={m.id} type="checkbox" checked={!m.absent} onChange={(e) => handleCheckbox(e, i)}/>
+                            <label htmlFor={m.id}>{m.fName} {m.lName}</label>
                         </li>
                     )}
                 </ul>
