@@ -35,7 +35,7 @@ const router = Router()
 router.get('/', asyncHandler(async (req, res) => {
     const users = await sproc('GetUsers')
 
-    res.json(users)
+    res.json({ users })
 }))
 
 module.exports = router

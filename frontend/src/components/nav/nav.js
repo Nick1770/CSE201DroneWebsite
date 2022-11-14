@@ -27,6 +27,7 @@ export const Nav = () => {
         <nav>
             <Link to="/">Home</Link>
             <Link to="/calendar">Calendar</Link>
+            <Link to="/members">Members</Link>
 
             {hasRole('ADMIN') ? <Link to="/attendance">Attendance</Link> : ""}
 
