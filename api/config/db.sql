@@ -141,6 +141,10 @@ DELIMITER ;
 --                                            Set Initial Values                                             --
 -- --------------------------------------------------------------------------------------------------------- --
 INSERT INTO Roles (name) VALUE ('ADMIN');
+CALL Register('admin@gmail.com', 'admin', 'account', '$2b$12$9fjmbA3.FXnT1wx/jfiOlu/XYNlGyUCEY2QTb3ztGqoZjOBHc0xWW');
+CALL AssignRole(1, 1);
+
+CALL AddEvent('Welcome to MU Drone Club!', CURRENT_TIMESTAMP());
 -- --------------------------------------------------------------------------------------------------------- --
 --                                                 Testing                                                   --
 -- --------------------------------------------------------------------------------------------------------- --
@@ -150,6 +154,7 @@ SET SQL_SAFE_UPDATES = 0;
 -- CALL AddEvent('name', CURRENT_TIMESTAMP());
 -- CALL AssignRole(1,1)
 -- select * from roles
+-- select * from assignedRoles
 -- CALL GetRoles(1)
 -- delete from events;
 -- select * from events;
