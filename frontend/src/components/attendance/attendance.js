@@ -44,7 +44,7 @@ const Attendance = () => {
                     { members ? members.map((m, i) => 
                         <li key={m.id}>
                             <input style={{ display: 'inline' }} id={m.id} type="checkbox" checked={!m.absent} onChange={(e) => handleCheckbox(e, i)}/>
-                            <label htmlFor={m.id}>{m.fName} {m.lName}</label>
+                            <label style={{ textTransform: 'capitalize' }} htmlFor={m.id}>{m.fName} {m.lName}</label>
                         </li>
                     ) : ""
                     }

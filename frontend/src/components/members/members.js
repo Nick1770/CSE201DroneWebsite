@@ -15,7 +15,7 @@ const Members = () => {
             <h1>Members</h1>
             <ul>
                 { members.map(m => 
-                    <li key={m.id}>{m.fName} {m.lName}</li>
+                    <li style={{ textTransform: 'capitalize' }} key={m.id}>{m.fName} {m.lName}</li>
                 )}
             </ul>
         </>
