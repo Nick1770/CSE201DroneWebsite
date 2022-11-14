@@ -70,12 +70,17 @@ router.post('/', Auth.isAdmin, asyncHandler(async (req, res) => {
  *             schema:
  *               type: object
  *               properties:
- *                 id:
- *                   type: integer
- *                 title:
- *                   type: string
- *                 start:
- *                   type: date
+ *                 events:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                       title:
+ *                         type: string
+ *                       start:
+ *                         type: date
  */
  router.get('/', asyncHandler(async (req, res) => {
     const { startDate, endDate } = req.query
