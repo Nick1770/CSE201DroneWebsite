@@ -3,7 +3,6 @@ const { Router } = require('express')
 const { asyncHandler } = require('../middleware/errors.js')
 const { sproc } = require('../config/mysql.js')
 const Auth = require('../middleware/auth.js')
-const bcrypt = require('bcrypt')
 
 const router = Router()
 
