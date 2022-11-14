@@ -28,11 +28,11 @@ const Login = () => {
                 <label htmlFor="email">Email: </label>
                 <input type="email" id="email" value={email} placeholder="example@gmail.com"
                     required onChange={e => setEmail(e.target.value)}/>
-                <br/>
+
                 <label htmlFor="password">Password: </label>
                 <input type="password" id="password" value={password} required
                     onChange={e => setPassword(e.target.value)}/>
-                <br/>
+
                 <input type="submit" value="Login"/>
             </form>
         </>
