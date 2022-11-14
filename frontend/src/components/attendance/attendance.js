@@ -41,12 +41,13 @@ const Attendance = () => {
             <form>
                 <input type="date" value={date} onChange={e => handleDateChange(e)}/>
                 <ul>
-                    { members.map((m, i) => 
+                    { members ? members.map((m, i) => 
                         <li key={m.id}>
                             <input id={m.id} type="checkbox" checked={!m.absent} onChange={(e) => handleCheckbox(e, i)}/>
                             <label htmlFor={m.id}>{m.fName} {m.lName}</label>
                         </li>
-                    )}
+                    ) : ""
+                    }
                 </ul>
             </form>
 
