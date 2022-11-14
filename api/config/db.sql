@@ -110,6 +110,12 @@ CREATE PROCEDURE GetEvents(
 	SELECT * FROM Events e WHERE e.start >= startDate AND e.start <= endDate;
 END//
 
+CREATE PROCEDURE DeleteEvents(
+	id INT
+) BEGIN
+	DELETE FROM Events e WHERE e.id = id;
+END//
+
 CREATE PROCEDURE GetAttendance(
 	onDate	DATETIME
 ) BEGIN

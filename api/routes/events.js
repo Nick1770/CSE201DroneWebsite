@@ -83,4 +83,31 @@ router.post('/', Auth.isAdmin, asyncHandler(async (req, res) => {
     })
 }))
 
+/**
+ * @swagger
+ * /events/{id}:
+ *   delete:
+ *     summary: delete an event
+ *     tags:
+ *       - "Events"
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         type: integer
+ *         description: id of event
+ *     responses:
+ *       200:
+ *         description: ok
+ */
+ router.delete('/:id', asyncHandler(async (req, res) => {
+    const { id } = req.params
+
+    if (!id)
+        return res.status(400).json({ message: 'missing id param in path' })
+    
+    await sproc('DeleteEvent', [id])
+    
+    res.sendStatus(200)
+}))
+
 module.exports = router
