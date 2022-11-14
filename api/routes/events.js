@@ -28,6 +28,13 @@ const router = Router()
  *     responses:
  *       201:
  *         description: Event added
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
  */
 router.post('/', Auth.isAdmin, asyncHandler(async (req, res) => {
     const { title, start } = req.body
@@ -35,9 +42,9 @@ router.post('/', Auth.isAdmin, asyncHandler(async (req, res) => {
     if (!title || !start)
         return res.status(400).json({ message: 'missing fields in body' })
 
-    await sproc('AddEvent', [title, start])
+    const id = await sproc('AddEvent', [title, start], true)
 
-    res.sendStatus(201)
+    res.status(201).json(id)
 }))
 
 /**
@@ -106,7 +113,7 @@ router.post('/', Auth.isAdmin, asyncHandler(async (req, res) => {
         return res.status(400).json({ message: 'missing id param in path' })
     
     await sproc('DeleteEvent', [id])
-    
+
     res.sendStatus(200)
 }))
 
