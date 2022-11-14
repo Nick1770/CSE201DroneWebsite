@@ -1,7 +1,8 @@
 "use strict"
 
 const errorHandler = () => (err, req, res, next) => {
-    const statusCode = res.statusCode ?? 500
+    let statusCode = res.statusCode ?? 500
+    statusCode = statusCode >= 200 && statusCode < 300 ? 500 : statusCode
 
     console.error(err)
 
