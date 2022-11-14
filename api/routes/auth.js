@@ -100,6 +100,10 @@ router.post('/logout', (req, res) => {
  *             properties:
  *               email:
  *                 type: string
+ *               fName:
+ *                 type: string
+ *               lName:
+ *                 type: string
  *               password:
  *                 type: string
  *     responses:
