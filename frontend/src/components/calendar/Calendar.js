@@ -20,7 +20,6 @@ const Calendar = (props) => {
     }
 
     const handleDateSet = (args) => {
-      console.log(args)
       getEvents(args.start, args.end)
     }
 
