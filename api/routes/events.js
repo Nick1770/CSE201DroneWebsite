@@ -47,20 +47,29 @@ router.post('/', Auth.isAdmin, asyncHandler(async (req, res) => {
  *     summary: get events
  *     tags:
  *       - "Events"
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               startDate:
- *                 type: date
- *               endDate:
- *                 type: date
+ *     parameters:
+ *       - in: query
+ *         name: startDate
+ *         type: date
+ *         description: minimum date "yyyy-mm-dd"
+ *       - in: query
+ *         name: endDate
+ *         type: date
+ *         description: maximum "yyyy-mm-dd"
  *     responses:
- *       201:
- *         description: Event added
+ *       200:
+ *         description: success
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
+ *                 title:
+ *                   type: string
+ *                 start:
+ *                   type: date
  */
  router.get('/', asyncHandler(async (req, res) => {
     const { startDate, endDate } = req.query

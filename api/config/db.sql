@@ -30,11 +30,11 @@ CREATE TABLE AssignedRoles (
 	PRIMARY KEY(role_id, user_id)
 );
 
-CREATE TABLE Attendance (
-	id			INT			NOT NULL	PRIMARY KEY	AUTO_INCREMENT,
-	user_id		INT			NOT NULL,
-    day			DATETIME	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY(user_id) REFERENCES Users(id) 
+CREATE TABLE Absences (
+	user_id		INT		NOT NULL,
+    date		DATE	NOT NULL,
+    FOREIGN KEY(user_id) REFERENCES Users(id) ,
+    PRIMARY KEY (user_id, date)
 );
 
 CREATE TABLE Events (
@@ -103,8 +103,37 @@ CREATE PROCEDURE AddEvent(
 	INSERT INTO Events (title, start) VALUE (title, start);
 END//
 
-CREATE PROCEDURE GetEvents() BEGIN
-	SELECT * FROM Events;
+CREATE PROCEDURE GetEvents(
+	startDate	DATETIME,
+    endDate		DATETIME
+) BEGIN
+	SELECT * FROM Events e WHERE e.start >= startDate AND e.start <= endDate;
+END//
+
+CREATE PROCEDURE GetAbsences(
+	onDate	DATETIME
+) BEGIN
+	SELECT
+		id,
+        email,
+        fName,
+        lName,
+        (date IS NOT NULL) AS absent
+	FROM Users u 
+		LEFT JOIN Absences a 
+			ON u.id = a.user_id AND a.date = DATE(onDate);
+END//
+
+CREATE PROCEDURE UpdateAbsence(
+	userId	INT,
+	onDate	DateTime,
+    absent	BOOLEAN
+) BEGIN
+	IF (absent) THEN
+		INSERT IGNORE INTO Absences (user_id, date) VALUE (userId, Date(onDate)); # ON DUPLICATE KEY UPDATE date = Date(onDate);
+    ELSE
+		DELETE FROM Absences WHERE user_id = userId AND Date(onDate) = date;
+    END IF;
 END//
 
 DELIMITER ;
@@ -117,6 +146,7 @@ INSERT INTO Roles (name) VALUE ('ADMIN');
 -- --------------------------------------------------------------------------------------------------------- --
 
 SET SQL_SAFE_UPDATES = 0;
+-- Call GetEvents('2022-10-30T04:00:00', '2022-12-11T05:00:00');
 -- CALL AddEvent('name', CURRENT_TIMESTAMP());
 -- CALL AssignRole(1,1)
 -- select * from roles
@@ -124,6 +154,11 @@ SET SQL_SAFE_UPDATES = 0;
 -- delete from events;
 -- select * from events;
 -- Call Register ('d','');
+
+-- select * from absences;
+-- insert into absences (user_id, date) VALUE (2, Date(CURRENT_TIMESTAMP()) + 1);
+CALL getAbsences(Date(CURRENT_TIMESTAMP()) + 1);
+
 -- SELECT * FROM Users;
 -- DELETE FROM Users;
 -- SELECT * FROM sessions;
