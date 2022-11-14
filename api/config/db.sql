@@ -110,7 +110,7 @@ CREATE PROCEDURE GetEvents(
 	SELECT * FROM Events e WHERE e.start >= startDate AND e.start <= endDate;
 END//
 
-CREATE PROCEDURE DeleteEvents(
+CREATE PROCEDURE DeleteEvent(
 	id INT
 ) BEGIN
 	DELETE FROM Events e WHERE e.id = id;

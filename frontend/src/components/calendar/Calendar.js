@@ -9,7 +9,7 @@ import "./calendar.css"
 const Calendar = (props) => {
     // const { darkMode } = props;
     const [events, setEvents] = useState([])
-    const { hasRole } = useAuth()
+    const { auth, hasRole } = useAuth()
     
     const getEvents = async (start, end) => {
       start = start.toISOString().split('.')[0]
@@ -33,7 +33,7 @@ const Calendar = (props) => {
     const eventClick = async (info) => {
       info.jsEvent.preventDefault();
 
-      if (window.confirm(`Are you sure you want to delete this event? ${info.event.title}`)) {
+      if (auth && window.confirm(`Are you sure you want to delete this event? ${info.event.title}`)) {
         await callAPI(`/events/${info.event.id}`, 'DELETE')
         setEvents(prev => prev.filter(e => e.id !== parseInt(info.event.id)))
       }
