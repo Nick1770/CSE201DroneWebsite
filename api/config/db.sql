@@ -110,7 +110,7 @@ CREATE PROCEDURE GetEvents(
 	SELECT * FROM Events e WHERE e.start >= startDate AND e.start <= endDate;
 END//
 
-CREATE PROCEDURE GetAbsences(
+CREATE PROCEDURE GetAttendance(
 	onDate	DATETIME
 ) BEGIN
 	SELECT
@@ -157,7 +157,7 @@ SET SQL_SAFE_UPDATES = 0;
 
 -- select * from absences;
 -- insert into absences (user_id, date) VALUE (2, Date(CURRENT_TIMESTAMP()) + 1);
-CALL getAbsences(Date(CURRENT_TIMESTAMP()) + 1);
+-- CALL getAbsences(Date(CURRENT_TIMESTAMP()));
 
 -- SELECT * FROM Users;
 -- DELETE FROM Users;

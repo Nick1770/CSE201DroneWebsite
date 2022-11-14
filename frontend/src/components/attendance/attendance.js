@@ -1,49 +1,53 @@
 import { useEffect, useState } from "react"
+import callAPI from "../../api/fetch"
 
 const Attendance = () => {
     const [members, setMembers] = useState([])
+    const [date, setDate] = useState(new Date().toISOString().substring(0, 10))
 
     useEffect(() => {
-        setMembers([
-            {
-                id: 0,
-                name: 'will',
-                isHere: true
-            },
-            {
-                id: 1,
-                name: 'nick',
-                isHere: false
-            }
-        ])
-    }, [])
+        getAttendance()
+    }, [date])
+
+    const getAttendance = () => {
+        callAPI(`/attendance?onDate=${date}`, 'GET')
+            .then(async res => {
+                if (res.status !== 200) return;
+                const json = await res.json()
+                setMembers(json.attendance)
+            })
+    }
+
+    const handleDateChange = (e) => {
+        setDate(e.target.value)
+    }
 
     const handleCheckbox = (e, i) => {
         setMembers(prev => {
-            prev[i].isHere = e.target.checked
+            prev[i].absent = !e.target.checked
+            callAPI('/attendance', 'PATCH', {
+                userId: prev[i].id,
+                date,
+                absent: prev[i].absent
+            })
             return [...prev]
         })
-    }
-
-    const handleSubmit = e => {
-        e.preventDefault()
-        console.log(members)
     }
 
     return (
         <>
             <h1>Attendance</h1>
 
-            <form onSubmit={handleSubmit}>
+            <form>
+                <input type="date" value={date} onChange={e => handleDateChange(e)}/>
                 <ul>
                     { members.map((m, i) => 
                         <li key={m.id}>
-                            {m.name}
-                            <input type="checkbox" checked={m.isHere} onChange={(e) => handleCheckbox(e, i)}/>
+                            <input type="checkbox" checked={!m.absent} onChange={(e) => handleCheckbox(e, i)}/>
+                            {m.fName} {m.lName}
                         </li>
                     )}
                 </ul>
-                <input type="submit"/>
             </form>
 
         </>

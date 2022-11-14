@@ -54,4 +54,39 @@ router.get('/', Auth.isAdmin, asyncHandler(async (req, res) => {
     res.json({ attendance })
 }))
 
+/**
+ * @swagger
+ * /attendance:
+ *   patch:
+ *     summary: get attendance for a certain day
+ *     tags:
+ *       - "Attendance"
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userId:
+ *                 type: integer
+ *               date:
+ *                 type: date
+ *               absent:
+ *                 type: boolean
+ *     responses:
+ *       200:
+ *         description: updated attendance
+ */
+router.patch('/', Auth.isAdmin, asyncHandler(async (req, res) => {
+    const { userId, date, absent } = req.body
+
+    if (!userId || !date || absent === null)
+        return res.status(400).json({ message: 'missing fields in body' })
+
+    await sproc('UpdateAbsence', [userId, date, absent])
+
+    res.sendStatus(200)
+}))
+
 module.exports = router
