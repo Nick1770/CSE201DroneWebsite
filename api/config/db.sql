@@ -152,6 +152,7 @@ DELIMITER ;
 -- --------------------------------------------------------------------------------------------------------- --
 INSERT INTO Roles (name) VALUE ('ADMIN');
 CALL Register('admin@gmail.com', 'admin', 'account', '$2b$12$9fjmbA3.FXnT1wx/jfiOlu/XYNlGyUCEY2QTb3ztGqoZjOBHc0xWW');
+CALL Register('john.williams@gmail.com', 'John', 'Williams', '$2b$12$peFUQVJyjgFmcJlvQua.7uTnVvHGCrynZVE04DL36O7FyWCQ8pu9S');
 CALL AssignRole(1, 1);
 
 CALL AddEvent('Welcome to MU Drone Club!', CURRENT_TIMESTAMP());
