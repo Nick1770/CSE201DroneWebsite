@@ -74,8 +74,6 @@ router.post('/', Auth.isAdmin, asyncHandler(async (req, res) => {
  router.get('/', asyncHandler(async (req, res) => {
     const { startDate, endDate } = req.query
 
-    console.log(startDate)
-
     if (!startDate || !endDate)
         return res.status(400).json({ message: 'missing fields in body' })
 
