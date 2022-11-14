@@ -19,15 +19,16 @@ const AddEvent = ({ onSubmit }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <label htmlFor="title">event name</label>
+            <h1>Add an Event</h1>
+            <label htmlFor="title">Name</label>
             <input id="title" type="text" value={title} required
                 onChange={e => setTitle(e.target.value)}/>
             
-            <label htmlFor="start">event name</label>
+            <label htmlFor="start">Date</label>
             <input id="date" type="date" value={date} required
                 onChange={e => setDate(e.target.value)}/>
 
-            <label htmlFor="time">event name</label>
+            <label htmlFor="time">Time</label>
             <input id="time" type="time" value={time} required
                 onChange={e => setTime(e.target.value)}/>
 
