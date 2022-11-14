@@ -4,11 +4,11 @@ const Newsletter = () => {
         <>
             <div>
 
-                <h1>NewsLetter!</h1>
-                <d> Click here to join our news letter</d>
-                <br></br>
-                <button>Newsletter</button>
-                
+                <h2>Newsletter!</h2>
+                <p> Click the button below to join our newsletter and stay up to date with MU Drone club.</p>
+                <form action="https://docs.google.com/forms/d/e/1FAIpQLScPCg8Obehe-ajiciFaWpgLC7vmGC_mkCwpOJOFq41ctoyCkw/viewform?usp=sf_link">
+                    <button>Sign up for Newsletter</button>
+                </form>
 
             </div>
         </>
