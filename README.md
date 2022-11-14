@@ -1,44 +1,62 @@
-## CSE201DroneWebsite
+## CSE201 Drone Website With SQL DataBase
 
-This project was built with React...
+This project was built with React, MySQL, and Node Js.
 ### Prerequisites
 
 Here are a few things you will need before installation. You may be asked to type Y or N during installation.
 
-  ```sh
-  some commands you might need to run
-  ```
-  ```sh
-  some commands you might need to run
-  ```
-  ```sh
-  some commands you might need to run
-  ```
+1. First you will need git
+
+For Windows use 
+```sh
+https://git-scm.com/download/win
+```
+
+For MacOS
+```sh
+brew install git
+```
+
+
+2. You will also need npm & node.js use this link
+https://nodejs.org/en/download/
+
+
   
   
 
-### Installation
+### Clone this repository
 
 
 
 1. Run this command once all pre-requisites are installed
    ```sh
-   some commands you might need to run
-   ```
-2. Next you'll need this
-   ```sh
-   some commands you might need to run
-   ```
-3. Along with...
-   ```sh
-   some commands you might need to run
-   ```
-4. You'll need to clone this repository
-   ```sh
    git clone https://github.com/Nick1770/CSE201DroneWebsite.git
    ```
 
-
+### How to set up the api (We used MySqlWorkbench)
+1. Run this command
+   ```sh
+   run npm i
+   ```
+2. Create MySQL database using the file found here: ./config/db.sql
+   
+3. Add .env file to the api folder with the following template (filling in missing values):
+ ```
+# dev or prod
+NODE_ENV = "dev"
+HOST = "localhost"
+PORT = 5000
+# in node env, generate secrets with: require('crypto').randomBytes(64).toString('hex')
+SESSION_SECRET = ""
+DB_USER = "root"
+DB_PASSWORD = ""
+DB_NAME = "CSE201"
+```
+4. Start the api
+```
+npm run start
+```
 
 ### Run the Website
 1. Navigate to the correct directory
@@ -51,7 +69,7 @@ Here are a few things you will need before installation. You may be asked to typ
    ```
 3. To run the website
    ```sh
-   npm start
+   npm run start
    ```
 4. Enjoy! You should have both a "local host" and a On your Network address
    
