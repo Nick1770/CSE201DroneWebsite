@@ -23,6 +23,7 @@ app.use(session(sessionConfig))
 app.use("/auth", require('./routes/auth.js'))
 app.use("/events", require('./routes/events.js'))
 app.use("/attendance", require('./routes/attendance.js'))
+app.use("/users", require('./routes/users.js'))
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 app.get('/', (req, res) => {

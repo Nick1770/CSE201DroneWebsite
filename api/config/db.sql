@@ -142,6 +142,10 @@ CREATE PROCEDURE UpdateAbsence(
     END IF;
 END//
 
+CREATE PROCEDURE GetUsers() BEGIN
+	SELECT id, fName, lName FROM Users;
+END//
+
 DELIMITER ;
 -- --------------------------------------------------------------------------------------------------------- --
 --                                            Set Initial Values                                             --
