@@ -48,7 +48,7 @@ const Register = () => {
                     onChange={e => setPassword(e.target.value)} />
 
                 <label htmlFor="confirmpassword">Confirm Password: </label>
-                <input type="confirmpassword" id="confirmpassword" value={confirmPassword} required
+                <input type="password" id="confirmpassword" value={confirmPassword} required
                     onChange={e => setConfirmPassword(e.target.value)} />
 
                 <input type="submit" value="Register"/>
