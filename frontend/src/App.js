@@ -1,7 +1,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/layout/layout';
-import Calendar from './components/calendar/calendar';
+import Calendar from './components/calendar/Calendar';
 import Login from './components/login/login';
 import Register from './components/register/register';
 import Home from './components/home/home';
