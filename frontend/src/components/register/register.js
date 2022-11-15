@@ -10,10 +10,14 @@ const Register = () => {
     const [password, setPassword] = useState("")
     const [fName, setFName] = useState("")
     const [lName, setLName] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(email + ', ' + password)
+        if (password !== confirmPassword) {
+            alert('Your passwords do not match!')
+            return
+        }
         const res = await register(email, fName, lName, password)
         if (res.status === 201)
             navigate('/')
@@ -42,6 +46,10 @@ const Register = () => {
                 <label htmlFor="password">Password: </label>
                 <input type="password" id="password" value={password} required
                     onChange={e => setPassword(e.target.value)} />
+
+                <label htmlFor="confirmpassword">Confirm Password: </label>
+                <input type="confirmpassword" id="confirmpassword" value={confirmPassword} required
+                    onChange={e => setConfirmPassword(e.target.value)} />
 
                 <input type="submit" value="Register"/>
             </form>
