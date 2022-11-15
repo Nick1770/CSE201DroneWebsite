@@ -34,23 +34,34 @@ https://nodejs.org/en/download/
    git clone https://github.com/Nick1770/CSE201DroneWebsite.git
    ```
 
-### How to set up the api (We used MySqlWorkbench)
-1. Run this command
+### How to set up the database (We used MySqlWorkbench)
+1. Create database using file found here: 
+   ```
+   ./api/config/db.sql
+   ```
+
+### How to set up the api
+1. Change directory to ./api
+   ```sh
+   cd ./api
+   ```
+2. Run this command
    ```sh
    run npm i
    ```
-2. Create MySQL database using the file found here: ./config/db.sql
    
 3. Add .env file to the api folder with the following template (filling in missing values):
  ```
 # dev or prod
 NODE_ENV = "dev"
+
 HOST = "localhost"
 PORT = 5000
 # in node env, generate secrets with: require('crypto').randomBytes(64).toString('hex')
 SESSION_SECRET = ""
+
 DB_USER = "root"
-DB_PASSWORD = ""
+DB_PASSWORD = "" # attained when setting up MySQL
 DB_NAME = "CSE201"
 ```
 4. Start the api
@@ -58,10 +69,10 @@ DB_NAME = "CSE201"
 npm run start
 ```
 
-### Run the Website
+### How to set up the frontend/react
 1. Navigate to the correct directory
    ```sh
-   cd Frontend
+   cd ./frontend
    ```
 2. If you haven't already
    ```sh
@@ -74,48 +85,9 @@ npm run start
 4. Enjoy! You should have both a "local host" and a On your Network address
    
 
-### Download
+### Downloads
 
 * NodeJS: https://nodejs.org/en/download/
 * MySQL: https://dev.mysql.com/downloads/mysql/
-
-### Setup
-
-#### Database
-
-1. Create database using file found here: 
-   ```
-   ./api/config/db.sql
-   ```
-
-#### API
-
-1. Change directory
-   ```sh
-   cd api
-   ```
-2. Install node modules
-   ```sh
-   npm i
-   ```
-3. Run API
-   ```sh
-   npm run start
-   ```
-
-#### Frontend
-
-1. Change directory
-   ```sh
-   cd frontend
-   ```
-2. Install node modules
-   ```sh
-   npm i
-   ```
-3. Compile and run React
-   ```sh
-   npm run start
-   ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
