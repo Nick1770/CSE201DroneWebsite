@@ -7,6 +7,7 @@ import Register from './components/register/register';
 import Home from './components/home/home';
 import Attendance from './components/attendance/attendance';
 import Members from './components/members/members'
+import Questions from './components/questions/questions';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/calendar" element={<Calendar/>}/>
         <Route path="/members" element={<Members/>}/>
         <Route path="/attendance" element={<Attendance/>}/>
+        <Route path="/answer" element={<Questions/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
 

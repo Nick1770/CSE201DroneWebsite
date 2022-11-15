@@ -55,5 +55,49 @@ Here are a few things you will need before installation. You may be asked to typ
    ```
 4. Enjoy! You should have both a "local host" and a On your Network address
    
-   
+
+### Download
+
+* NodeJS: https://nodejs.org/en/download/
+* MySQL: https://dev.mysql.com/downloads/mysql/
+
+### Setup
+
+#### Database
+
+1. Create database using file found here: 
+   ```
+   ./api/config/db.sql
+   ```
+
+#### API
+
+1. Change directory
+   ```sh
+   cd api
+   ```
+2. Install node modules
+   ```sh
+   npm i
+   ```
+3. Run API
+   ```sh
+   npm run start
+   ```
+
+#### Frontend
+
+1. Change directory
+   ```sh
+   cd frontend
+   ```
+2. Install node modules
+   ```sh
+   npm i
+   ```
+3. Compile and run React
+   ```sh
+   npm run start
+   ```
+
 <p align="right">(<a href="#top">back to top</a>)</p>

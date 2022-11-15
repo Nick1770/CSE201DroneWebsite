@@ -30,6 +30,7 @@ export const Nav = () => {
             <Link to="/members">Members</Link>
 
             {hasRole('ADMIN') ? <Link to="/attendance">Attendance</Link> : ""}
+            {hasRole('ADMIN') ? <Link to="/answer">Answer</Link> : ""}
 
             <span>    
                 {

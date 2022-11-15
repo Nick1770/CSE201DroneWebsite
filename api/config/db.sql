@@ -43,6 +43,14 @@ CREATE TABLE Events (
 	start		DATETIME	NOT NULL
 );
 
+CREATE TABLE Questions (
+	id			INT				NOT NULL		PRIMARY KEY AUTO_INCREMENT,
+    user_id		INT				NOT NULL,
+    content		VARCHAR(500)	NOT NULL,
+    answer		VARCHAR(500)	DEFAULT NULL,
+    posted_at 	DATETIME 		NOT NULL 	DEFAULT CURRENT_TIMESTAMP
+);
+
 -- --------------------------------------------------------------------------------------------------------- --
 --                                               Stored Procs                                                --
 -- --------------------------------------------------------------------------------------------------------- --
@@ -144,6 +152,34 @@ END//
 
 CREATE PROCEDURE GetUsers() BEGIN
 	SELECT id, fName, lName FROM Users;
+END//
+
+CREATE PROCEDURE AskQuestion(
+	_user_id VARCHAR(500),
+    _content VARCHAR(500)
+) BEGIN
+	INSERT INTO Questions (user_id, content) VALUES (_user_id, _content);
+END//
+
+CREATE PROCEDURE AnswerQuestion(
+	_id VARCHAR(500),
+    _answer VARCHAR(500)
+) BEGIN
+	UPDATE Questions SET answer = _answer WHERE id = _id;
+END//
+
+CREATE PROCEDURE GetQandA() BEGIN
+	SELECT * FROM Questions WHERE answer IS NOT NULL;
+END//
+
+CREATE PROCEDURE GetQuestions() BEGIN
+	SELECT * FROM Questions;
+END//
+
+CREATE PROCEDURE DeleteQuestion(
+	_id INT
+) BEGIN
+	DELETE FROM Questions WHERE id = _id;
 END//
 
 DELIMITER ;

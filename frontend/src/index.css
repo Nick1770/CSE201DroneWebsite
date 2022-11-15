@@ -33,11 +33,28 @@ button, input[type=submit] {
   box-shadow: 0px 0px 3px black;
 }
 
-form input {
+form input, form textarea {
   display: block;
   margin-bottom: 5px;
 }
 
 form label {
   text-transform: capitalize;
+}
+
+.questions-and-answers {
+  margin-bottom: 20px;
+  background-color: rgba(0,0,0,.1);
+  border-radius: 8px;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.questions-and-answers .question, .questions-and-answers .answer {
+  padding: 5px;
+}
+
+.questions-and-answers .question {
+  background-color: #b61E2E;
+  color: white;
 }
