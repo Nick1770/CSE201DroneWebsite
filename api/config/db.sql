@@ -176,10 +176,10 @@ CREATE PROCEDURE GetQuestions() BEGIN
 	SELECT * FROM Questions;
 END//
 
-CREATE PROCEDURE DeleteQuestion(
+CREATE PROCEDURE RemoveAnswer(
 	_id INT
 ) BEGIN
-	DELETE FROM Questions WHERE id = _id;
+	UPDATE Questions SET answer = NULL WHERE id = _id;
 END//
 
 DELIMITER ;
@@ -192,6 +192,9 @@ CALL Register('john.williams@gmail.com', 'John', 'Williams', '$2b$12$peFUQVJyjgF
 CALL AssignRole(1, 1);
 
 CALL AddEvent('Welcome to MU Drone Club!', CURRENT_TIMESTAMP());
+
+CALL AskQuestion(1, 'What time does this club meet?');
+CALL AnswerQuestion(1, 'This club meets at 6:00pm on Wednesday');
 -- --------------------------------------------------------------------------------------------------------- --
 --                                                 Testing                                                   --
 -- --------------------------------------------------------------------------------------------------------- --
